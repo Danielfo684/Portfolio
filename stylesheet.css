@@ -1,0 +1,55 @@
+*{margin:0;
+padding: 0;}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+header {
+overflow: hidden;
+    color: white;
+    text-align: center;
+    padding: 0;
+    box-sizing: border-box;
+    margin: 3%;
+    margin-top: 0;
+    border-bottom: 1px solid black;
+}
+section {
+    margin: 3%;
+}
+h1, h2, h3 {
+color: #000;
+font-family: Montserrat;
+}
+p{
+    font-family: Montserrat;
+}
+
+.project {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #333;
+    color: white;
+    margin-top: 20px;
+}
+.headerSection{
+    float: right;
+    margin: 2%;
+    line-height: 0;
+}
+.headerTitle{
+    float: left;
+    margin:2%;
+    line-height: 0;
+
+    
+}
