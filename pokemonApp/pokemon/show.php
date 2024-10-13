@@ -77,7 +77,7 @@ $connection = null;
                     </div>
                     <div class="form-group">
                         pokemon level:
-                        <?= $fila['price'] ?>
+                        <?= $fila['level'] ?>
                     </div>
                     <div class="form-group">
                         pokemon evolution:

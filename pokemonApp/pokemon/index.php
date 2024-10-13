@@ -111,7 +111,7 @@ try {
                                 <tr >
                                     <td><?php echo $fila['id']; ?></td>
                                     <td><?= $fila['name']; ?></td>
-                                    <td><?= $fila['price']; ?></td>
+                                    <td><?= $fila['level']; ?></td>
                                     <td><?= $fila['evolution']; ?></td>
                                     <?php
                                     //if(isset($_SESSION['user'])) {
