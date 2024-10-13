@@ -19,7 +19,21 @@ if (isset($_SESSION['old']['level'])) {
     $level = $_SESSION['old']['level'];
     unset($_SESSION['old']['level']);
 }
-
+$weight = '';
+if (isset($_SESSION['old']['weight'])) {
+    $weight = $_SESSION['old']['weight'];
+    unset($_SESSION['old']['weight']);
+}
+$height = '';
+if (isset($_SESSION['old']['height'])) {
+    $height = $_SESSION['old']['height'];
+    unset($_SESSION['old']['height']);
+}
+$type = '';
+if (isset($_SESSION['old']['type'])) {
+    $type = $_SESSION['old']['type'];
+    unset($_SESSION['old']['type']);
+}
 if (isset($_SESSION['old']['evolution'])) {
     $evolution = $_SESSION['old']['evolution'];
     unset($_SESSION['old']['evolution']);
@@ -95,6 +109,18 @@ if (isset($_SESSION['old']['evolution'])) {
                         <label for="evolution">pokemon evolution</label>
                         <input value="<?= $evolution ?>" required type="number" class="form-control" id="evolution"
                             name="evolution" placeholder="pokemon evolution">
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">pokemon weight</label>
+                        <input value="<?= $weight ?>" required type="number" step="0.001" class="form-control" id="weight" name="weight" placeholder="pokemon weight">
+                    </div>
+                    <div class="form-group">
+                        <label for="height">pokemon height</label>
+                        <input value="<?= $height ?>" required type="number" step="0.001" class="form-control" id="height" name="height" placeholder="pokemon height">
+                    </div>
+                    <div class="form-group">
+                        <label for="type">pokemon type</label>
+                        <input value="<?= $type ?>" required type="text" class="form-control" id="type" name="type" placeholder="pokemon type">
                     </div>
                     <button type="submit" class="btn btn-primary">add</button>
                 </form>
