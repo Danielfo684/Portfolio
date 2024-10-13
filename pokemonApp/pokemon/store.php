@@ -14,9 +14,9 @@ if(!isset($_SESSION['user'])) {
 // Conexión a la base de datos
 try {
     $connection = new \PDO(
-      'mysql:host=localhost;dbname=productdatabase',
-      'productuser',
-      'productpassword',
+      'mysql:host=localhost;dbname=pokemondatabase',
+      'pokemontrainer',
+      'pokemonpassword',
       array(
         PDO::ATTR_PERSISTENT => true,
         PDO::MYSQL_ATTR_INIT_COMMAND => 'set names utf8')
@@ -27,29 +27,34 @@ try {
 }
 
 $resultado = 0;
-$url = 'create.php?op=insertproduct&result=' . $resultado;
+$url = 'create.php?op=insertpokemon&result=' . $resultado;
 
-// Compruebo que los datos obligatorios: nombre y precio
-if(isset($_POST['name']) && isset($_POST['price'])) {
+// Compruebo que los datos obligatorios: nombre y nivel, estén presentes
+if(isset($_POST['name']) && isset($_POST['level']) && isset($_POST['evolution'])) {
     $name = $_POST['name'];
-    $price = $_POST['price'];
+    $level = $_POST['level'];
+    $evolution = $_POST['evolution'];	
     $ok = true;
     $name = trim($name);
     // Verifica que el nombre tenga entre 2 y 100 caracteres
     if(strlen($name) < 2 || strlen($name) > 100) { 
         $ok = false;
     }
-    // Verifica que el precio sea un número entre 0 y 1,000,000
-    if(!(is_numeric($price) && $price >= 0 && $price <= 1000000)) { 
+    // Verifica que el nivel sea un número entre 0 y 100
+    if(!(is_numeric($level) && $level >= 0 && $level <= 100)) { 
+        $ok = false;
+    }
+    // Verifica que la evolución sea un número entre 0 y 3
+    if(!(is_numeric($evolution) && $evolution >= 0&& $evolution <= 3)) {
         $ok = false;
     }
 
     if($ok) {
-        // Prepara la consulta SQL para insertar un producto
-        $sql = 'insert into product (name, price) values (:name, :price)'; 
+        // Prepara la consulta SQL para insertar un pokémon
+        $sql = 'insert into pokemon (name, level, evolution) values (:name, :level, :evolution)'; 
         $sentence = $connection->prepare($sql); 
         // Define los parámetros para la consulta
-        $parameters = ['name' => $name, 'price' => $price]; 
+        $parameters = ['name' => $name, 'level' => $level, 'evolution' => $evolution]; 
         foreach($parameters as $nombreParametro => $valorParametro) { 
             $sentence->bindValue($nombreParametro, $valorParametro); 
         }
@@ -57,7 +62,7 @@ if(isset($_POST['name']) && isset($_POST['price'])) {
         try {
             $sentence->execute(); 
             $resultado = $connection->lastInsertId(); 
-            $url = 'index.php?op=insertproduct&result=' . $resultado; 
+            $url = 'index.php?op=insertpokemon&result=' . $resultado; 
         } catch(PDOException $e) {
             
         }
@@ -65,7 +70,8 @@ if(isset($_POST['name']) && isset($_POST['price'])) {
 }
 if($resultado == 0) {
     $_SESSION['old']['name'] = $name; // Guarda el nombre en la sesión en caso de error
-    $_SESSION['old']['price'] = $price; // Guarda el precio en la sesión en caso de error
+    $_SESSION['old']['level'] = $level; // Guarda el nivel en la sesión en caso de error
+    $_SESSION['old']['evolution'] = $evolution; // Guarda la evolución en la sesión en caso de error
 }
 
 // El método header() redirecciona a la URL indicada

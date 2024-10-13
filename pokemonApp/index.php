@@ -5,12 +5,12 @@ session_start();
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>dwes</title>
+        <title>pokemonDataBase</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="./">dwes</a>
+            <a class="navbar-brand" href="./">pokemonDataBase</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -20,7 +20,7 @@ session_start();
                         <a class="nav-link" href="./">home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./product">product</a>
+                        <a class="nav-link" href="./pokemon">pokemon</a>
                     </li>
                 </ul>
             </div>
@@ -42,7 +42,7 @@ session_start();
                 }
                 ?>
                 <div class="row">
-                    <h3>products, etc.</h3>
+                    <h3>pokemons, etc.</h3>
                 </div>
                 <div class="row">
                     <?php
@@ -58,13 +58,13 @@ session_start();
                     }
                     ?>
                     &nbsp;
-                    <a href="product" class="btn btn-success">products</a>
+                    <a href="pokemon" class="btn btn-success">pokemons</a>
                 </div>
                 <hr>
             </div>
         </main>
         <footer class="container">
-            <p>&copy; IZV 2024</p>
+            <p>&copy; IZV 2024, Práctica de PhP</p>
         </footer>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
