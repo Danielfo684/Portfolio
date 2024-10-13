@@ -180,7 +180,7 @@ $connection = null;
                         </div>
                         <div class="form-group">
                             <label for="evolution">pokemon evolution</label>
-                            <input value="<?= $evolution ?>" required type="text" class="form-control" id="evolution" name="evolution" placeholder="pokemon evolution">
+                            <input value="<?= $evolution ?>" required type="number" class="form-control" id="evolution" name="evolution" placeholder="pokemon evolution">
                         </div>
 
 
