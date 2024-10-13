@@ -71,8 +71,8 @@ if (isset($_POST['height'])) {
     exit;
 }
 
-if (isset($_POST['type'])) {
-    $type = $_POST['type'];
+if (isset($_POST['ptype'])) {
+    $ptype = $_POST['ptype'];
 } else {
     header('Location: .');
     exit;
@@ -85,26 +85,26 @@ if (isset($_POST['evolution'])) {
 }
 
 
-$sql = 'update pokemon set name = :name, level = :level,  weight = :weight, height = :height, type = :type, evolution = :evolution where id = :id';
+$sql = 'update pokemon set name = :name, level = :level,  weight = :weight, height = :height, ptype = :ptype, evolution = :evolution where id = :id';
 
 $parameters = [
     'name' => $name,
     'level' => $level,
     'weight' => $weight,
     'height' => $height,
-    'type' => $type,
+    'ptype' => $ptype,
     'evolution' => $evolution,
     'id' => $id
 ];
 //debería meter la misma validación que antes en store.php
-$sql = 'update pokemon set name = :name, level = :level, weight = :weight, height = :height, type = :type, evolution = :evolution where id = :id';
+$sql = 'update pokemon set name = :name, level = :level, weight = :weight, height = :height, ptype = :ptype, evolution = :evolution where id = :id';
 $sentence = $connection->prepare($sql);
 $parameters = [
     'name' => $name,
     'level' => $level,
     'weight' => $weight,
     'height' => $height,
-    'type' => $type,
+    'ptype' => $ptype,
     'evolution' => $evolution,
     'id' => $id
 ];
@@ -121,7 +121,7 @@ try {
     $_SESSION['old']['level'] = $level;
     $_SESSION['old']['weight'] = $weight;
     $_SESSION['old']['height'] = $height;
-    $_SESSION['old']['type'] = $type;
+    $_SESSION['old']['ptype'] = $ptype;
     $_SESSION['old']['evolution'] = $evolution;
     $url = 'edit.php?id=' . $id . '&op=editpokemon&result=' . $resultado;
 }

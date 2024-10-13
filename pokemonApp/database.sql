@@ -15,7 +15,7 @@
     level int(3) not null,
     weight decimal(4,2) not null,
     height decimal(3,2) not null,
-    type varchar(100) not null,
+    ptype varchar(100) not null,
     evolution int(1) not null
     ) engine=innodb default charset=utf8 collate=utf8_unicode_ci;
 

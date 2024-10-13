@@ -10,7 +10,7 @@ $level = '';
 $name = '';
 $weight = '';
 $height = '';
-$type = '';
+$ptype = '';
 $evolution = '';
 if (isset($_SESSION['old']['name'])) {
     $name = $_SESSION['old']['name'];
@@ -30,10 +30,10 @@ if (isset($_SESSION['old']['height'])) {
     $height = $_SESSION['old']['height'];
     unset($_SESSION['old']['height']);
 }
-$type = '';
-if (isset($_SESSION['old']['type'])) {
-    $type = $_SESSION['old']['type'];
-    unset($_SESSION['old']['type']);
+$ptype = '';
+if (isset($_SESSION['old']['ptype'])) {
+    $ptype = $_SESSION['old']['ptype'];
+    unset($_SESSION['old']['ptype']);
 }
 if (isset($_SESSION['old']['evolution'])) {
     $evolution = $_SESSION['old']['evolution'];
@@ -100,8 +100,8 @@ if($weight == '') {
 if($height == '') {
     $height = $fila['height'];
 }
-if($type == '') {
-    $type = $fila['type'];
+if($ptype == '') {
+    $ptype = $fila['ptype'];
 }
 if($evolution == '') {
     $evolution = $fila['evolution'];
@@ -175,8 +175,8 @@ $connection = null;
                             <input value="<?= $height ?>" required type="number" step="0.001" class="form-control" id="height" name="height" placeholder="pokemon height">
                         </div>
                         <div class="form-group">
-                            <label for="type">pokemon type</label>
-                            <input value="<?= $type ?>" required type="text" class="form-control" id="type" name="type" placeholder="pokemon type">
+                            <label for="ptype">pokemon ptype</label>
+                            <input value="<?= $type ?>" required type="text" class="form-control" id="ptype" name="ptype" placeholder="pokemon ptype">
                         </div>
                         <div class="form-group">
                             <label for="evolution">pokemon evolution</label>

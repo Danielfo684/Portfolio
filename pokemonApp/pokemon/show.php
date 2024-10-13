@@ -88,8 +88,8 @@ $connection = null;
                         <?= $fila['height'] ?>
                     </div>
                     <div class="form-group">
-                        pokemon type:
-                        <?= $fila['type'] ?>
+                        pokemon ptype:
+                        <?= $fila['ptype'] ?>
                     </div>
                     <div class="form-group">
                         pokemon evolution:

@@ -30,12 +30,12 @@ $resultado = 0;
 $url = 'create.php?op=insertpokemon&result=' . $resultado;
 
 // Compruebo que los datos obligatorios: nombre y nivel, estén presentes
-if(isset($_POST['name']) && isset($_POST['level'])  && isset($_POST['weight']) && isset($_POST['height']) && isset($_POST['type']) && isset($_POST['evolution'])) {
+if(isset($_POST['name']) && isset($_POST['level'])  && isset($_POST['weight']) && isset($_POST['height']) && isset($_POST['ptype']) && isset($_POST['evolution'])) {
     $name = $_POST['name'];
     $level = $_POST['level'];
     $weight = $_POST['weight'];
     $height = $_POST['height'];
-    $type = $_POST['type'];
+    $ptype = $_POST['ptype'];
     $evolution = $_POST['evolution'];	
     $ok = true;
     $name = trim($name);
@@ -56,7 +56,7 @@ if(isset($_POST['name']) && isset($_POST['level'])  && isset($_POST['weight']) &
         $ok = false;
     }
     // Verifica que el tipo tenga entre 2 y 50 caracteres
-    if(strlen($type) < 2 || strlen($type) > 100) {
+    if(strlen($ptype) < 2 || strlen($ptype) > 100) {
         $ok = false;
     }
     // Verifica que la evolución sea un número entre 0 y 3
@@ -66,7 +66,7 @@ if(isset($_POST['name']) && isset($_POST['level'])  && isset($_POST['weight']) &
 
     if($ok) {
         // Prepara la consulta SQL para insertar un pokémon
-        $sql = 'insert into pokemon (name, level,  weight, height, type, evolution) values (:name, :level, :weight, :height, :type, :evolution)'; 
+        $sql = 'insert into pokemon (name, level,  weight, height, ptype, evolution) values (:name, :level, :weight, :height, :ptype, :evolution)'; 
         $sentence = $connection->prepare($sql); 
         // Define los parámetros para la consulta
         $parameters = [
@@ -74,7 +74,7 @@ if(isset($_POST['name']) && isset($_POST['level'])  && isset($_POST['weight']) &
             'level' => $level,
             'weight' => $weight,
             'height' => $height,
-            'type' => $type,
+            'ptype' => $ptype,
             'evolution' => $evolution,
         ]; 
         foreach($parameters as $nombreParametro => $valorParametro) { 
@@ -95,7 +95,7 @@ if($resultado == 0) {
     $_SESSION['old']['level'] = $level; // Guarda el nivel en la sesión en caso de error
     $_SESSION['old']['weight'] = $weight; // Guarda el peso en la sesión en caso de error
     $_SESSION['old']['height'] = $height; // Guarda la altura en la sesión en caso de error
-    $_SESSION['old']['type'] = $type; // Guarda el tipo en la sesión en caso de error
+    $_SESSION['old']['ptype'] = $ptype; // Guarda el tipo en la sesión en caso de error
     $_SESSION['old']['evolution'] = $evolution; // Guarda la evolución en la sesión en caso de error
 }
 
