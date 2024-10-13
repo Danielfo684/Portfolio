@@ -28,13 +28,32 @@ p{
 }
 
 .project {
+    display: flex;
     margin-bottom: 20px;
-    padding: 10px;
+    padding: 20px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    line-height: 1.6;
+    justify-content: space-around;
+}
+.project img {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    margin-right: 20px;
+    align-items: center;
+    align-content: center;
+margin: auto 0;
+}
+.project * {
+    margin: auto 0;
+}
+.project p {
+    flex: 0.5;
 }
 footer {
+    margin-top: auto;
     text-align: center;
     padding: 1em;
     background-color: #333;
@@ -50,6 +69,8 @@ footer {
     float: left;
     margin:2%;
     line-height: 0;
+}
+a {text-decoration: none;
+color: black;
 
-    
 }
