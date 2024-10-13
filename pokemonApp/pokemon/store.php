@@ -30,7 +30,7 @@ $resultado = 0;
 $url = 'create.php?op=insertpokemon&result=' . $resultado;
 
 // Compruebo que los datos obligatorios: nombre y nivel, estén presentes
-if(isset($_POST['name']) && isset($_POST['level']) && isset($_POST['evolution'])) {
+if(isset($_POST['name']) && isset($_POST['level'])  && isset($_POST['weight']) && isset($_POST['height']) && isset($_POST['type']) && isset($_POST['evolution'])) {
     $name = $_POST['name'];
     $level = $_POST['level'];
     $weight = $_POST['weight'];
@@ -60,22 +60,22 @@ if(isset($_POST['name']) && isset($_POST['level']) && isset($_POST['evolution'])
         $ok = false;
     }
     // Verifica que la evolución sea un número entre 0 y 3
-    if(!(is_numeric($evolution) && $evolution >= 0&& $evolution <= 3)) {
+    if(!(strlen($evolution) < 2 || strlen($evolution) > 100)) {
         $ok = false;
     }
 
     if($ok) {
         // Prepara la consulta SQL para insertar un pokémon
-        $sql = 'insert into pokemon (name, level, evolution, weight, height, type) values (:name, :level, :evolution, :weight, :height, :type)'; 
+        $sql = 'insert into pokemon (name, level,  weight, height, type, evolution) values (:name, :level, :weight, :height, :type, :evolution)'; 
         $sentence = $connection->prepare($sql); 
         // Define los parámetros para la consulta
         $parameters = [
             'name' => $name,
             'level' => $level,
-            'evolution' => $evolution,
             'weight' => $weight,
             'height' => $height,
-            'type' => $type
+            'type' => $type,
+            'evolution' => $evolution
         ]; 
         foreach($parameters as $nombreParametro => $valorParametro) { 
             $sentence->bindValue($nombreParametro, $valorParametro); 

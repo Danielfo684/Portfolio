@@ -108,11 +108,7 @@ if (isset($_SESSION['old']['evolution'])) {
                         <input value="<?= $level ?>" required type="number" step="0.001" class="form-control" id="level"
                             name="level" placeholder="pokemon level">
                     </div>
-                    <div class="form-group">
-                        <label for="evolution">pokemon evolution</label>
-                        <input value="<?= $evolution ?>" required type="number" class="form-control" id="evolution"
-                            name="evolution" placeholder="pokemon evolution">
-                    </div>
+                   
                     <div class="form-group">
                         <label for="weight">pokemon weight</label>
                         <input value="<?= $weight ?>" required type="number" step="0.001" class="form-control" id="weight" name="weight" placeholder="pokemon weight">
@@ -124,6 +120,11 @@ if (isset($_SESSION['old']['evolution'])) {
                     <div class="form-group">
                         <label for="type">pokemon type</label>
                         <input value="<?= $type ?>" required type="text" class="form-control" id="type" name="type" placeholder="pokemon type">
+                    </div>
+                    <div class="form-group">
+                        <label for="evolution">pokemon evolution</label>
+                        <input value="<?= $evolution ?>" required type="number" class="form-control" id="evolution"
+                            name="evolution" placeholder="pokemon evolution">
                     </div>
                     <button type="submit" class="btn btn-primary">add</button>
                 </form>
