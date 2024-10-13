@@ -10,9 +10,6 @@ if (!isset($_SESSION['user'])) {
 // Lectura de datos, continuación del hack
 $level = '';
 $name = '';
-$weight = '';
-$height = '';
-$ptype = '';
 $evolution = '';
 if (isset($_SESSION['old']['name'])) {
     $name = $_SESSION['old']['name'];
@@ -22,21 +19,7 @@ if (isset($_SESSION['old']['level'])) {
     $level = $_SESSION['old']['level'];
     unset($_SESSION['old']['level']);
 }
-$weight = '';
-if (isset($_SESSION['old']['weight'])) {
-    $weight = $_SESSION['old']['weight'];
-    unset($_SESSION['old']['weight']);
-}
-$height = '';
-if (isset($_SESSION['old']['height'])) {
-    $height = $_SESSION['old']['height'];
-    unset($_SESSION['old']['height']);
-}
-$ptype = '';
-if (isset($_SESSION['old']['ptype'])) {
-    $ptype = $_SESSION['old']['ptype'];
-    unset($_SESSION['old']['ptype']);
-}
+
 if (isset($_SESSION['old']['evolution'])) {
     $evolution = $_SESSION['old']['evolution'];
     unset($_SESSION['old']['evolution']);
@@ -107,19 +90,6 @@ if (isset($_SESSION['old']['evolution'])) {
                         <label for="level">pokemon level</label>
                         <input value="<?= $level ?>" required type="number" step="0.001" class="form-control" id="level"
                             name="level" placeholder="pokemon level">
-                    </div>
-                   
-                    <div class="form-group">
-                        <label for="weight">pokemon weight</label>
-                        <input value="<?= $weight ?>" required type="number" step="0.001" class="form-control" id="weight" name="weight" placeholder="pokemon weight">
-                    </div>
-                    <div class="form-group">
-                        <label for="height">pokemon height</label>
-                        <input value="<?= $height ?>" required type="number" step="0.001" class="form-control" id="height" name="height" placeholder="pokemon height">
-                    </div>
-                    <div class="form-group">
-                        <label for="ptype">pokemon type</label>
-                        <input value="<?= $ptype ?>" required type="text" class="form-control" id="ptype" name="ptype" placeholder="pokemon ptype">
                     </div>
                     <div class="form-group">
                         <label for="evolution">pokemon evolution</label>

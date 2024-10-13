@@ -57,26 +57,6 @@ if (isset($_POST['level'])) {
     header('Location: .');
     exit;
 }
-if (isset($_POST['weight'])) {
-    $weight = $_POST['weight'];
-} else {
-    header('Location: .');
-    exit;
-}
-
-if (isset($_POST['height'])) {
-    $height = $_POST['height'];
-} else {
-    header('Location: .');
-    exit;
-}
-
-if (isset($_POST['ptype'])) {
-    $ptype = $_POST['ptype'];
-} else {
-    header('Location: .');
-    exit;
-}
 if (isset($_POST['evolution'])) {
     $level = $_POST['evolution'];
 } else {
@@ -85,29 +65,12 @@ if (isset($_POST['evolution'])) {
 }
 
 
-$sql = 'update pokemon set name = :name, level = :level,  weight = :weight, height = :height, ptype = :ptype, evolution = :evolution where id = :id';
-
-$parameters = [
-    'name' => $name,
-    'level' => $level,
-    'weight' => $weight,
-    'height' => $height,
-    'ptype' => $ptype,
-    'evolution' => $evolution,
-    'id' => $id
-];
+$sql = 'update pokemon set name = :name, level = :level, evolution = :evolution where id = :id';
+$parameters = ['name' => $name, 'level' => $level, 'evolution' => $evolution, 'id' => $id];
 //debería meter la misma validación que antes en store.php
-$sql = 'update pokemon set name = :name, level = :level, weight = :weight, height = :height, ptype = :ptype, evolution = :evolution where id = :id';
+$sql = 'update pokemon set name = :name, level = :level where id = :id';
 $sentence = $connection->prepare($sql);
-$parameters = [
-    'name' => $name,
-    'level' => $level,
-    'weight' => $weight,
-    'height' => $height,
-    'ptype' => $ptype,
-    'evolution' => $evolution,
-    'id' => $id
-];
+$parameters = ['name' => $name, 'level' => $level, 'evolution' => $evolution, 'id' => $id];
 foreach ($parameters as $nombreParametro => $valorParametro) {
     $sentence->bindValue($nombreParametro, $valorParametro);
 }
@@ -119,9 +82,6 @@ try {
     $resultado = 0;
     $_SESSION['old']['name'] = $name;
     $_SESSION['old']['level'] = $level;
-    $_SESSION['old']['weight'] = $weight;
-    $_SESSION['old']['height'] = $height;
-    $_SESSION['old']['ptype'] = $ptype;
     $_SESSION['old']['evolution'] = $evolution;
     $url = 'edit.php?id=' . $id . '&op=editpokemon&result=' . $resultado;
 }
