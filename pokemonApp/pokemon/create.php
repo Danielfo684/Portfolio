@@ -10,6 +10,9 @@ if (!isset($_SESSION['user'])) {
 // Lectura de datos, continuación del hack
 $level = '';
 $name = '';
+$weight = '';
+$height = '';
+$type = '';
 $evolution = '';
 if (isset($_SESSION['old']['name'])) {
     $name = $_SESSION['old']['name'];

@@ -5,9 +5,13 @@ if(!isset($_SESSION['user'])) {
     header('Location:.');
     exit;
 }
-//recupero nivel, nombre y evolucion
+//recupero los parámetros
 $level = '';
 $name = '';
+$weight = '';
+$height = '';
+$type = '';
+$evolution = '';
 if (isset($_SESSION['old']['name'])) {
     $name = $_SESSION['old']['name'];
     unset($_SESSION['old']['name']);
@@ -89,6 +93,15 @@ if($name == '') {
 }
 if($level == '') {
     $level = $fila['level'];
+}
+if($weight == '') {
+    $weight = $fila['weight'];
+}
+if($height == '') {
+    $height = $fila['height'];
+}
+if($type == '') {
+    $type = $fila['type'];
 }
 if($evolution == '') {
     $evolution = $fila['evolution'];
