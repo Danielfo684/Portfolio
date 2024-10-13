@@ -22,17 +22,14 @@ if (isset($_SESSION['old']['level'])) {
     $level = $_SESSION['old']['level'];
     unset($_SESSION['old']['level']);
 }
-$weight = '';
 if (isset($_SESSION['old']['weight'])) {
     $weight = $_SESSION['old']['weight'];
     unset($_SESSION['old']['weight']);
 }
-$height = '';
 if (isset($_SESSION['old']['height'])) {
     $height = $_SESSION['old']['height'];
     unset($_SESSION['old']['height']);
 }
-$ptype = '';
 if (isset($_SESSION['old']['ptype'])) {
     $ptype = $_SESSION['old']['ptype'];
     unset($_SESSION['old']['ptype']);

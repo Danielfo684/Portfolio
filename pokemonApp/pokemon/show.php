@@ -28,8 +28,12 @@ if(!$sentence->execute()){
     echo 'no sql';
     exit;
 }
-$sentence->execute();
-if(!$fila = $sentence->fetch()) {
+if(!$sentence->execute()){
+    echo 'no sql';
+    exit;
+}
+$fila = $sentence->fetch(PDO::FETCH_ASSOC);
+if(!$fila) {
     echo 'no data';
     exit;
 }
@@ -85,7 +89,7 @@ $connection = null;
                     </div>
                     <div class="form-group">
                         pokemon height:
-                        <?= $fila['height'] ?>
+                        <?= isset($fila['height']) ? $fila['height'] : 'N/A' ?>
                     </div>
                     <div class="form-group">
                         pokemon ptype:
