@@ -35,7 +35,6 @@ if (isset($_SESSION['old']['ptype'])) {
     $ptype = $_SESSION['old']['ptype'];
     unset($_SESSION['old']['ptype']);
 }
-$evolution = '';
 if (isset($_SESSION['old']['evolution'])) {
     $evolution = $_SESSION['old']['evolution'];
     unset($_SESSION['old']['evolution']);
@@ -162,7 +161,6 @@ $connection = null;
                         <div class="form-group">
                             <label for="name">pokemon name</label>
                             <input value="<?= $name ?>" required type="text" class="form-control" id="name" name="name" placeholder="pokemon name">
-                
                         </div>
                         <div class="form-group">
                             <label for="level">pokemon level</label>
@@ -178,11 +176,11 @@ $connection = null;
                         </div>
                         <div class="form-group">
                             <label for="ptype">pokemon ptype</label>
-                            <input value="<?= $ptype ?>" required type="text" class="form-control" id="ptype" name="ptype" placeholder="pokemon ptype">
+                            <input value="<?= $type ?>" required type="text" class="form-control" id="ptype" name="ptype" placeholder="pokemon ptype">
                         </div>
                         <div class="form-group">
                             <label for="evolution">pokemon evolution</label>
-                            <input value="<?= $evolution ?>" required type="number" class="form-control" id="evolution" name="evolution" placeholder="pokemon evolution">
+                            <input value="<?= $evolution ?>" required type="text" class="form-control" id="evolution" name="evolution" placeholder="pokemon evolution">
                         </div>
 
 

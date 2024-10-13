@@ -1,11 +1,11 @@
 <?php
 session_start();
 if(!isset($_SESSION['user'])) {
-    header('Location: index.php');
+    header('Location:.');
     exit;
 }
 try {
-    $connection = new PDO(
+    $connection = new \PDO(
       'mysql:host=localhost;dbname=pokemondatabase',
       'pokemontrainer',
       'pokemonpassword',
@@ -35,5 +35,5 @@ if(!$sentence->execute()){
 }
 $resultado = $sentence->rowCount();
 $connection = null;
-$url = 'index.php?op=deletepokemon&result=' . $resultado;
+$url = '.?op=deletepokemon&result=' . $resultado;
 header('Location: ' . $url);
