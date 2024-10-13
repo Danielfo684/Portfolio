@@ -118,7 +118,7 @@ if (isset($_SESSION['old']['evolution'])) {
                         <input value="<?= $height ?>" required type="number" step="0.001" class="form-control" id="height" name="height" placeholder="pokemon height">
                     </div>
                     <div class="form-group">
-                        <label for="ptype">pokemon type</label>
+                        <label for="ptype">pokemon ptype</label>
                         <input value="<?= $ptype ?>" required type="text" class="form-control" id="ptype" name="ptype" placeholder="pokemon ptype">
                     </div>
                     <div class="form-group">

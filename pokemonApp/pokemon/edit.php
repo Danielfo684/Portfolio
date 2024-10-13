@@ -176,7 +176,7 @@ $connection = null;
                         </div>
                         <div class="form-group">
                             <label for="ptype">pokemon ptype</label>
-                            <input value="<?= $type ?>" required type="text" class="form-control" id="ptype" name="ptype" placeholder="pokemon ptype">
+                            <input value="<?= $ptype ?>" required type="text" class="form-control" id="ptype" name="ptype" placeholder="pokemon ptype">
                         </div>
                         <div class="form-group">
                             <label for="evolution">pokemon evolution</label>
