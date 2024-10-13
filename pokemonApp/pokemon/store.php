@@ -60,7 +60,7 @@ if(isset($_POST['name']) && isset($_POST['level'])  && isset($_POST['weight']) &
         $ok = false;
     }
     // Verifica que la evolución sea un número entre 0 y 3
-    if(!(strlen($evolution) < 2 || strlen($evolution) > 100)) {
+    if(!(is_numeric($evolution) && $evolution >= 0 && $evolution <= 3)) {
         $ok = false;
     }
 
@@ -75,7 +75,7 @@ if(isset($_POST['name']) && isset($_POST['level'])  && isset($_POST['weight']) &
             'weight' => $weight,
             'height' => $height,
             'type' => $type,
-            'evolution' => $evolution
+            'evolution' => $evolution,
         ]; 
         foreach($parameters as $nombreParametro => $valorParametro) { 
             $sentence->bindValue($nombreParametro, $valorParametro); 

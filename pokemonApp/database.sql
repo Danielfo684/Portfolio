@@ -1,23 +1,29 @@
-create database pokemondatabase
-    default character set utf8
-    collate utf8_unicode_ci;
+/*  
+ drop database if exists pokemondatabase;
+    drop user if exists pokemontrainer@localhost;
+    */
 
-use pokemondatabase;
+    create database pokemondatabase
+        default character set utf8
+        collate utf8_unicode_ci;
 
-create table pokemon (
-  id bigint(20) not null auto_increment primary key,
-  name varchar(100) not null unique,
-  weight int(4,2) not null,
-  height int(3,2) not null,
-  type varchar(100) not null,
-  evolution int(1) not null
-) engine=innodb default charset=utf8 collate=utf8_unicode_ci;
+    use pokemondatabase;
 
-create user pokemontrainer@localhost
-    identified by 'pokemonpassword';
+    create table pokemon (
+    id bigint(20) not null auto_increment primary key,
+    name varchar(100) not null unique,
+    level int(3) not null,
+    weight decimal(4,2) not null,
+    height decimal(3,2) not null,
+    type varchar(100) not null,
+    evolution int(1) not null
+    ) engine=innodb default charset=utf8 collate=utf8_unicode_ci;
 
-grant all
-    on pokemondatabase.*
-    to pokemontrainer@localhost;
+    create user pokemontrainer@localhost
+        identified by 'pokemonpassword';
 
-flush privileges;
+    grant all
+        on pokemondatabase.*
+        to pokemontrainer@localhost;
+
+    flush privileges;
