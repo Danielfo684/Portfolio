@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Upload;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UploadController extends Controller
 {
@@ -12,7 +13,7 @@ class UploadController extends Controller
      */
     public function index()
     {
-        //
+        return view('index');
     }
 
     /**
@@ -20,7 +21,7 @@ class UploadController extends Controller
      */
     public function create()
     {
-        //
+       return view('upload.create');
     }
 
     /**
