@@ -13,7 +13,7 @@ class UploadController extends Controller
      */
     public function index()
     {
-        return view('index');
+        return view('upload.index');
     }
 
     /**
@@ -29,7 +29,17 @@ class UploadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->hasFile('file')&& $request->file('file')->isValid()) {
+            $file = $request->file('file');
+            $fileExtension = $file->getClientOriginalExtension();
+            $nombre_original = $file->getClientOriginalName();
+        $nombre_oculto = date('Y_m_d_H_i_s') . '_' . $nombre_original . '.' . $fileExtension;
+            $path = $file->store('ejercicio', 'private');
+            echo $path;
+
+        $imagen = new Upload(['nombre_original' => $nombre_original, 'nombre_oculto' => $nombre_oculto]);
+        $imagen->save();
+        }
     }
 
     /**

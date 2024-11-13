@@ -6,11 +6,12 @@
 }
 
 body {
+    padding: 100px;
     display: flex;
-    justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f4f4f9;
+    background-color: #ffffff;
+    flex-direction: column;
 }
 
 .upload-container {

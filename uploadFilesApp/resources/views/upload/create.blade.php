@@ -9,10 +9,10 @@
     <body>
 
         <h1>Subir archivos pdf e imágenes</h1>
-        <form action="{{ url('subir') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ url('store') }}" method="post" enctype="multipart/form-data">
             @csrf <!-- seguridad, consultas preparadas SQL-->
             <input type="file" name="file">
             <input type="submit">
         </form>
-    </body>
+
 </html>
