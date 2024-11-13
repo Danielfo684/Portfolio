@@ -1,101 +1,103 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Pokemon;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class PokemonController extends Controller
 {
-    public function index() {
+    /**
+     * Display a listing of the resource.
+     */
+    public function index(){
         return view('pokemon.index', 
             [
-            'lipokemon' => 'active',
-            'pokemon' =>  Pokemon::orderBy('name')->get(),
+                'lipokemon' => 'active',
+                'pokemon' => Pokemon::orderBy('nombre')->get(),
             ]);
     }
 
-    public function create(Request $request) {
-        //
-        return view('pokemon.create', ['lipokemon' => 'active']);
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+       return view('pokemon.create', ['lipokemon' => 'active']);
     }
 
-    public function store(Request $request) {
-        //
+    /**
+     * Store a newly created resource in storage.
+     */
+   public function store(Request $request)
+    {
         $validated = $request->validate([
-            'name' => 'required|unique:pokemon|max:50|min:4', // Cambiado a 'name'
-            'type' => 'required|max:50', // Nuevo campo
-            'height' => 'required|numeric', // Nuevo campo
-            'weight' => 'required|numeric', // Nuevo campo
-            'evolution' => 'nullable|max:50', // Nuevo campo
-            'level' => 'required|integer', // Nuevo campo
+            'nombre'  => 'required|unique:pokemon|max:50|min:4',
+            'peso'    => 'required|numeric|gte:0|lte:999.999',
+            'altura'  => 'required|numeric|gte:0|lte:10.999',
+            'tipo'    => 'required|in:Agua,Fuego,Planta,AGUA,FUEGO,PLANTA,agua,fuego,planta',
+            'nivel'  => 'required|numeric|gte:1|lte:100',
+            'evolucion' => 'required |numeric|gte:1|lte:5',
         ]);
-        $object = new pokemon($request->all());
+        $pokemon = new Pokemon($request->all());
         try {
-            $result = $object->save();
-            //$object = Pokemon::create($request->all());
-            return redirect('pokemon')->with(['message' => 'The pokemon has been created.']);
+            $pokemon = Pokemon::create($request->all());
+            return redirect('pokemon')->with(['message' => 'El Pokémon ha sido creado.']);
         } catch(\Exception $e) {
-            //si no lo he guardado volver a la página anterior con sus datos para volver a rellenar el formulario y mensaje
-            return back()->withInput()->withErrors(['message' => 'The pokemon has not been created.']);
+            return back()->withInput()->withErrors(['message' => 'El Pokémon no ha sido creado.']);
         }
     }
 
-    // public function show(Pokemon $pokemon) {
-    //     return view('pokemon.show', 
-    //         [
-    //         'lipokemon' => 'active',
-    //         'pokemon' => $pokemon,
-    //         ]);
-    // }
-
-    public function show($id) {
+    /**
+     * Display the specified resource.
+     */
+    public function show(Request $request, $id)
+    {
         $pokemon = Pokemon::find($id);
-        if ($pokemon == null) {
+        if($pokemon === null){
             abort(404);
         }
-        return view('pokemon.show', 
-            [
-            'lipokemon' => 'active',
-            'pokemon' => $pokemon,
-            ]);
+        return view('pokemon.show', ['lipokemon' => 'active', 'pokemon' => $pokemon]);
     }
 
-    public function edit(Pokemon $pokemon) {
-        return view('pokemon.edit', 
-            [
-            'lipokemon' => 'active',
-            'pokemon' => $pokemon,
-            ]);
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Request $request, Pokemon $pokemon)
+    {
+        return view('pokemon.edit', ['lipokemon' => 'active', 'pokemon' => $pokemon]);
     }
 
-    public function update(Request $request, Pokemon $pokemon) {
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Pokemon $pokemon){
         $validated = $request->validate([
-            'name' => 'required|max:50|min:4|unique:pokemon,name,' . $pokemon->id, // Cambiado a 'name'
-            'type' => 'required|max:50', // Nuevo campo
-            'height' => 'required|numeric', // Nuevo campo
-            'weight' => 'required|numeric', // Nuevo campo
-            'evolution' => 'nullable|max:50', // Nuevo campo
-            'level' => 'required|integer', // Nuevo campo
+            'nombre'  => 'required|max:50|min:4',
+            'peso'    => 'required|numeric|gte:0|lte:999.999',
+            'altura'  => 'required|numeric|gte:0|lte:10.999',
+            'tipo'    => 'required|in:Agua,Fuego,Planta,AGUA,FUEGO,PLANTA,agua,fuego,planta',
+            'nivel'  => 'required|numeric|gte:1|lte:100',
+            'evolucion' => 'required|numeric|gte:1|lte:5',
         ]);
         try {
             $result = $pokemon->update($request->all());
-            //$pokemon->fill($request->all());
-            //$result = $pokemon->save();
-            return redirect('pokemon')->with(['message' => 'The pokemon has been updated.']);
+            return redirect('pokemon')->with(['message' => 'El Pokémon ha sido actualizado.']);
         } catch(\Exception $e) {
-            return back()->withInput()->withErrors(['message' => 'The pokemon has not been updated.']);
+            return back()->withInput()->withErrors(['message' => 'El Pokémon no ha sido actualizado.']);  
         }
     }
 
-    public function destroy(Pokemon $pokemon) {
-        //
+    /**
+     * Remove the specified resource from storage.
+     */
+        public function destroy(Request $request, Pokemon $pokemon){
         try {
-            $pokemon->delete();
-            return redirect('pokemon')->with(['message' => 'The pokemon has been deleted.']);
-        } catch(\Exception $e) {
-             return back()->withErrors(['message' => 'The pokemon has not been deleted.']);
+        $pokemon->delete();
+        return redirect('pokemon')->with(['message' => 'El Pokémon ha sido eliminado']);
+        } catch (\Exception $e) {
+        return back()->withErrors(['message' => 'El Pokémon no ha sido eliminado']);
         }
     }
+
+
+    
 }

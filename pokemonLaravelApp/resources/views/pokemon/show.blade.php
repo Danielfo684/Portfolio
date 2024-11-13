@@ -1,39 +1,33 @@
+
 @extends('base')
-
-@section('title', 'Pokémon Details')
-
+@section('title', 'Detalles del Pokémon')
 @section('content')
-
+    
     <div class="form-group">
-        Pokémon ID #:
-        {{ $pokemon->id }}
+        Nombre del Pokémon:
+        {{$pokemon->nombre}}
     </div>
     <div class="form-group">
-        Name:
-        {{ $pokemon->name }}
+        Peso del Pokémon:
+        {{$pokemon->peso}} kg
     </div>
     <div class="form-group">
-        Type:
-        {{ $pokemon->type }}
+        Altura del Pokémon:
+        {{$pokemon->altura}} m
     </div>
     <div class="form-group">
-        Height:
-        {{ number_format($pokemon->height, 2) }} m
+        Tipo del Pokémon:
+        {{$pokemon->tipo}}
     </div>
     <div class="form-group">
-        Weight:
-        {{ number_format($pokemon->weight, 2) }} kg
+       Nivel:
+        {{$pokemon->nivel}}
     </div>
     <div class="form-group">
-        Evolution:
-        {{ $pokemon->evolution }}
+       Evolución:
+        {{$pokemon->evolucion}}
     </div>
     <div class="form-group">
-        Level:
-        {{ $pokemon->level }}
+        <a href="{{url()->previous()}}">Volver</a>
     </div>
-    <div class="form-group">
-        <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
-    </div>
-
 @endsection

@@ -1,28 +1,21 @@
 (function () {
-
-    let tabla = document.getElementById('tablaProducto');
-
-    if(tabla) {
-        tabla.addEventListener('click', clickTable);
-    }
-
-    tabla = document.getElementById('tablaMueble');
-
-    if(tabla) {
-        tabla.addEventListener('click', clickTable);
-    }
-
+    let tablas = ['tablaProducto', 'tablaMueble', 'tablaPokemon'];
+    tablas.forEach(function(tablaId) {
+        let tabla = document.getElementById(tablaId);
+        if (tabla) {
+            tabla.addEventListener('click', clickTable);
+        }
+    });
     function clickTable(event) {
         const formDelete = document.getElementById('formDelete');
         let target = event.target;
-        if(target.tagName === 'A' && target.getAttribute('class') === 'borrar') {
+        if (target.tagName === 'A' && target.classList.contains('borrar')) {
             event.preventDefault();
-            if(confirm('Confirm delete?')) {
+            if (confirm('Confirm delete?')) {
                 let url = target.dataset.href;
-                formDelete.action = url;
+                formDelete.action = url;  
                 formDelete.submit();
             }
         }
     }
-
 })();

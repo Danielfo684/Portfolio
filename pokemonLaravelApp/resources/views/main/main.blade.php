@@ -10,6 +10,6 @@
         <a href="{{url('login')}}" class="btn btn-success">log in</a>
     @endif
     &nbsp;
-    <a href="{{url('pokemon')}}" class="btn btn-success">pokemon</a>
+    <a href="{{url('pokemon')}}" class="btn btn-success">pokemons</a>
 
 @endsection

@@ -1,55 +1,33 @@
+
 @extends('base')
-
-@section('title', 'Edit Pokémon')
-
+@section('title', 'Editar Pokémon')
 @section('content')
-
-<form action="{{ url('pokemon/' . $pokemon->id) }}" method="post">
-    @csrf
-    @method('put')
-    <div class="form-group">
-        <label for="name">Pokémon Name</label>
-        <input value="{{ old('name', $pokemon->name) }}" required type="text" class="form-control" id="name" name="name" placeholder="Pokémon name">
-        @error('name')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="form-group">
-        <label for="type">Pokémon Type</label>
-        <input value="{{ old('type', $pokemon->type) }}" required type="text" class="form-control" id="type" name="type" placeholder="Pokémon type (e.g., Water, Electric)">
-        @error('type')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="form-group">
-        <label for="height">Height</label>
-        <input value="{{ old('height', $pokemon->height) }}" required type="number" step="0.01" class="form-control" id="height" name="height" placeholder="Height in meters">
-        @error('height')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="form-group">
-        <label for="weight">Weight</label>
-        <input value="{{ old('weight', $pokemon->weight) }}" required type="number" step="0.01" class="form-control" id="weight" name="weight" placeholder="Weight in kilograms">
-        @error('weight')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="form-group">
-        <label for="evolution">Evolution</label>
-        <input value="{{ old('evolution', $pokemon->evolution) }}" type="text" class="form-control" id="evolution" name="evolution" placeholder="Pokémon evolution (optional)">
-        @error('evolution')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-    <div class="form-group">
-        <label for="level">Level</label>
-        <input value="{{ old('level', $pokemon->level) }}" type="number" class="form-control" id="level" name="level" placeholder="Pokémon level (optional)">
-        @error('level')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-    </div>
-    <button type="submit" class="btn btn-primary">Edit Pokémon</button>
-</form>
-
+    <form action="{{url('pokemon/' . $pokemon->id)}}" method="post">
+        @csrf
+        @method('put')
+        <div class="form-group">
+            <label for="nombre">Nombre del Pokémon</label>
+            <input value="{{old('nombre', $pokemon->nombre)}}" required type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del Pokémon">
+        </div>
+        <div class="form-group">
+            <label for="peso">Peso del Pokémon</label>
+            <input value="{{old('peso', $pokemon->peso)}}" required type="number" step="0.001" class="form-control" id="peso" name="peso" placeholder="Peso del Pokémon">
+        </div>
+        <div class="form-group">
+            <label for="altura">Altura del Pokémon</label>
+            <input value="{{old('altura', $pokemon->altura)}}" required type="number" step="0.001" class="form-control" id="altura" name="altura" placeholder="Altura del Pokémon">
+        </div>
+        <div class="form-group">
+            <label for="tipo">Tipo del Pokémon</label>
+            <input value="{{old('tipo', $pokemon->tipo)}}" required type="text" class="form-control" id="tipo" name="tipo" placeholder="Fuego, Agua o Planta">
+        </div>
+        <div class="form-group">
+            <label for="nivel">Nivel del Pokémon</label>
+            <input value="{{old('nivel', $pokemon->nivel)}}" required type="nivel" class="form-control" id="nivel" name="nivel" placeholder="Nivel del Pokémon">
+        </div>
+        <div class="form-group">
+            <label for="evolucion">Evolución del Pokémon</label>
+            <input value="{{old('evolucion', $pokemon->evolucion)}}" required type="evolucion" class="form-control" id="evolucion" name="evolucion" placeholder="Evolución del Pokémon">
+        <button type="submit" class="btn btn-primary">Editar</button>
+    </form>
 @endsection
