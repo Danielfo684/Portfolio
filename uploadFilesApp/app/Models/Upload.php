@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Upload extends Model
 {
     use HasFactory;
-    protected $table = 'upload';
+    protected $table = 'uploads';
 
     protected $fillable = [
         'nombre_original',

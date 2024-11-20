@@ -21,7 +21,7 @@ class UploadController extends Controller
      */
     public function create()
     {
-       return view('upload.create');
+        return view('upload.create');
     }
 
     /**
@@ -29,16 +29,16 @@ class UploadController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->hasFile('file')&& $request->file('file')->isValid()) {
+        if ($request->hasFile('file') && $request->file('file')->isValid()) {
             $file = $request->file('file');
-            $fileExtension = $file->getClientOriginalExtension();
             $nombre_original = $file->getClientOriginalName();
-        $nombre_oculto = date('Y_m_d_H_i_s') . '_' . $nombre_original . '.' . $fileExtension;
-            $path = $file->store('ejercicio', 'private');
-            echo $path;
+            $fileExtension = $file->getClientOriginalExtension();
+            $nombre_oculto = date('Y_m_d_H_i_s') . '_' . $nombre_original . '.' . $fileExtension;
+            $path = $file->storeAs('private/ejercicio', $nombre_oculto, 'private');
 
-        $imagen = new Upload(['nombre_original' => $nombre_original, 'nombre_oculto' => $nombre_oculto]);
-        $imagen->save();
+            $imagen = new Upload(['nombre_original' => $nombre_original, 'nombre_oculto' => $nombre_oculto]);
+            $imagen->save();
+            return view('upload.store', compact('nombre_original'));
         }
     }
 

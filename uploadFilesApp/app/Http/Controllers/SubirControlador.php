@@ -10,20 +10,18 @@ class SubirControlador extends Controller
 {
 
 function img (Request $request, $file) {
-    return response()->file(storage_path('app/private/carpeta/') .$file);
+    return response()->file(storage_path('app/private/ejercicio/') .$file);
 }
 function imgAll(Request $request) {
     // Obtener los nombres de los archivos desde la base de datos
-    $fileNames = \DB::table('upload')->pluck('nombre_original');
+    $fileNames = \DB::table('uploads')->pluck('nombre_original');
 
     // Crear URLs para cada imagen
     $fileUrls = [];
     foreach ($fileNames as $fileName) {
         $fileUrls[] = Storage::url('app/private/carpeta/' . $fileName);
     }
-
-    // Retornar las URLs en una respuesta JSON
-    return response()->json($fileUrls);
+    
 }
     function index(){
         return view('index');
